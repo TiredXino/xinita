@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>te amo 🤍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.3);
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+            to { text-shadow: 2px 2px 20px rgba(255,255,255,0.5); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .canva-content {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-top: 56.25%;
+            margin: 20px 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .canva-content iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .love-letters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .letter {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .letter:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .letter:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .letter::before {
+            content: '💌';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+        }
+
+        .letter h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .letter p {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .decorative-hearts {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2rem;
+        }
+
+        .decorative-hearts span {
+            display: inline-block;
+            margin: 0 10px;
+            animation: pulse 2s infinite;
+        }
+
+        .decorative-hearts span:nth-child(2) { animation-delay: 0.5s; }
+        .decorative-hearts span:nth-child(3) { animation-delay: 1s; }
+        .decorative-hearts span:nth-child(4) { animation-delay: 1.5s; }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .container {
+                max-width: 90%;
+                padding: 30px 15px;
+            }
+            
+            .header h1 {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .love-letters {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .letter {
+                transform: rotate(-1deg);
+            }
+            
+            .letter:nth-child(even) {
+                transform: rotate(1deg);
+            }
+            
+            .main-card {
+                padding: 35px;
+            }
+            
+            .decorative-hearts {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 95%;
+                padding: 15px 10px;
+            }
+            
+            .header {
+                margin-bottom: 30px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+                margin-bottom: 8px;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+                opacity: 0.95;
+            }
+            
+            .main-card {
+                padding: 20px;
+                border-radius: 15px;
+                margin-bottom: 25px;
+            }
+            
+            .main-card h2 {
+                font-size: 1.6rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .canva-content {
+                margin: 15px 0;
+                border-radius: 12px;
+            }
+            
+            .love-letters {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 25px 0;
+            }
+            
+            .letter {
+                transform: none !important;
+                padding: 20px;
+                border-radius: 12px;
+                margin-bottom: 0;
+            }
+            
+            .letter:nth-child(even) {
+                transform: none !important;
+            }
+            
+            .letter h3 {
+                font-size: 1.2rem;
+                margin-bottom: 12px;
+            }
+            
+            .letter p {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            
+            .letter::before {
+                font-size: 20px;
+                top: 8px;
+                right: 12px;
+            }
+            
+            .decorative-hearts {
+                margin: 25px 0;
+                font-size: 1.8rem;
+            }
+            
+            .decorative-hearts span {
+                margin: 0 8px;
+            }
+            
+            .footer {
+                margin-top: 30px;
+                font-size: 1.1rem;
+            }
+            
+            .footer p {
+                margin-bottom: 8px;
+            }
+            
+            .heart {
+                font-size: 16px;
+            }
+            
+            .click-heart {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px 8px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .main-card {
+                padding: 15px;
+            }
+            
+            .main-card h2 {
+                font-size: 1.4rem !important;
+            }
+            
+            .letter {
+                padding: 15px;
+            }
+            
+            .letter h3 {
+                font-size: 1.1rem;
+            }
+            
+            .letter p {
+                font-size: 0.9rem;
+            }
+            
+            .decorative-hearts {
+                font-size: 1.5rem;
+            }
+            
+            .decorative-hearts span {
+                margin: 0 5px;
+            }
+            
+            .footer {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) and (orientation: landscape) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .main-card {
+                padding: 15px;
+            }
+            
+            .love-letters {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .letter {
+                padding: 15px;
+            }
+            
+            .letter h3 {
+                font-size: 1rem;
+            }
+            
+            .letter p {
+                font-size: 0.85rem;
+            }
+        }
+
+        .click-heart {
+            position: fixed;
+            font-size: 25px;
+            pointer-events: none;
+            z-index: 1000;
+            animation: heartFloat 4s ease-in-out forwards;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(0px) scale(0.5);
+                opacity: 0;
+            }
+            20% {
+                transform: translateY(-20px) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0.8);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" style="top: 10%; left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="top: 20%; right: 15%; animation-delay: 1s;">💖</div>
+    <div class="heart" style="top: 60%; left: 5%; animation-delay: 2s;">💕</div>
+    <div class="heart" style="top: 80%; right: 10%; animation-delay: 3s;">💗</div>
+    <div class="heart" style="top: 30%; left: 80%; animation-delay: 4s;">💝</div>
+
+    <audio id="backgroundMusic" autoplay loop>
+        <source src="https://www.dropbox.com/scl/fi/1yj072sg0jid21zmkdhcf/Fourth-Of-July.mp3?rlkey=somo45yy72l09lhfs63cx1jaz&dl=1" type="audio/mpeg">
+        QUIETO PARAUUU TU NAVEGADOR NO SE LLEVA BIEN CON EL AUDIO JAJJAJA, CAMBIATE A OTRO PORFA.
+    </audio>
+
+    <div class="container">
+        <div class="header">
+            <h1>para mi peque 🤍</h1>
+            <p class="subtitle">con todo el amor, tu xinito :3</p>
+        </div>
+
+        <div class="decorative-hearts">
+            <span>💖</span>
+            <span>💕</span>
+            <span>💗</span>
+            <span>💝</span>
+        </div>
+
+        <div class="main-card">
+            <h2 style="text-align: center; color: #333; margin-bottom: 20px; font-size: 2rem;">Mi Mensaje Especial para Ti 💌</h2>
+            
+            <div class="canva-content">
+                <iframe loading="lazy" 
+                        src="https://www.canva.com/design/DAGsx-UFDl0/9VR9hHvCGa14KKGZYZ0mtQ/view?embed" 
+                        allowfullscreen="allowfullscreen" 
+                        allow="fullscreen">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="love-letters">
+            <div class="letter">
+                <h3>Mi Amor Para Ti 💕</h3>
+                <p>Cada día que pasa, estoy mas loco y enamorado por ti, eres mi luz que ilumina mis días y la razón de mi sonrisa, contigo siempre es un momento único, te amo mucho peque</p>
+            </div>
+
+            <div class="letter">
+                <h3>Mi Niña 💖</h3>
+                <p>Gracias por ser como eres, cada cosita de ti me enamora y me encanta, desde tu personalidad, hasta tu físico, me encantas en general, ante mis ojos eres perfecta</p>
+            </div>
+
+            <div class="letter">
+                <h3>Mi Razón De Ser 💗</h3>
+                <p>Cada segundo, cada minuto, cada hora, cada día, cada semana, cada més, te pienso y me despierto feliz pensando en ti, eres mi razón de ser, de despertarme cada mañana con una sonrisa, te amo</p>
+            </div>
+
+            <div class="letter">
+                <h3>Mi Futuro Contigo 💝</h3>
+                <p>Deseo que llegue el día en el que nos veamos, pasar tardes contigo, ver peliculas juntos tumbaditos, caminar juntos, comer juntos, quiero hacer todo lo que se me ocurra, pero contigo, te amo</p>
+            </div>
+        </div>
+
+        <div class="decorative-hearts">
+            <span>💖</span>
+            <span>💕</span>
+            <span>💗</span>
+            <span>💝</span>
+            <span>💖</span>
+        </div>
+
+        <div class="footer">
+            <p>Te amo infinitamente, mi Xinita hermosa ❤️</p>
+            <p style="margin-top: 10px; font-size: 1rem; opacity: 0.8;">Con todo mi corazón, Iker</p>
+        </div>
+    </div>
+
+    <script>
+        function playMusic() {
+            const music = document.getElementById('backgroundMusic');
+            music.play().catch(function(error) {
+                console.log('debug simple si no funciona el audio (holis):', error);
+            });
+        }
+
+        function createHeart(e) {
+            const hearts = ['❤️', '💖', '💕', '💗', '💝'];
+            const randomHeart = hearts[Math.floor(Math.random() * hearts.length)];
+            
+            const x = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+            const y = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+            
+            const heart = document.createElement('div');
+            heart.innerHTML = randomHeart;
+            heart.className = 'click-heart';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            playMusic();
+            
+            document.addEventListener('click', createHeart);
+            document.addEventListener('touchstart', createHeart, { passive: true });
+            
+            document.addEventListener('click', function() {
+                const music = document.getElementById('backgroundMusic');
+                if (music.paused) {
+                    music.play();
+                }
+            }, { once: true });
+            
+            document.addEventListener('touchstart', function() {
+                const music = document.getElementById('backgroundMusic');
+                if (music.paused) {
+                    music.play();
+                }
+            }, { once: true, passive: true });
+        });
+
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        setTimeout(() => {
+            const title = document.querySelector('.header h1');
+            const originalText = title.textContent;
+            typeWriter(title, originalText, 150);
+        }, 1000);
+    </script>
+</body>
+</html>
